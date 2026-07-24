@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('sadata-bootstrap::layouts.public')
 
 @section('content')
 <div class="container">

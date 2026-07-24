@@ -7,6 +7,10 @@
     <title>{{ ($pageTitle ?? 'Dashboard') . ' - ' . config('app.name', 'Sadata') }}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    @php
+        $themeStyles = $themeStyles ?? config('sadata_ui_bootstrap.assets.theme.styles', []);
+        $themeScripts = $themeScripts ?? config('sadata_ui_bootstrap.assets.theme.scripts', []);
+    @endphp
     @foreach ($themeStyles as $style)
         <link href="{{ $style }}" rel="stylesheet" type="text/css" />
     @endforeach
