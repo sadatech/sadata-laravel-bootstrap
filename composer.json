@@ -1,0 +1,46 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "sadata/sadata-laravel-bootstrap",
+    "type": "library",
+    "description": "Bootstrap 5 UI theme package for Sadata Laravel applications. Provides layouts, components, and assets for a clean, modern admin interface.",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/view": "^12.0|^13.0",
+        "sadata/sadata-laravel-core": "^0.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sadata\\Bootstrap\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sadata\\Bootstrap\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sadata\\Bootstrap\\Providers\\SadataBootstrapServiceProvider"
+            ]
+        },
+        "sadata": {
+            "namespace": "Sadata\\Bootstrap\\",
+            "source_namespace": "App\\",
+            "namespace_rewrite_required": false,
+            "installable": true,
+            "theme": "bootstrap"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
