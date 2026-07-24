@@ -17,7 +17,7 @@
                         <p class="text-muted small">Sign in to your account</p>
                     </div>
 
-                    @if ($errors->any())
+                    @if (isset($errors) && $errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0 small">
                                 @foreach ($errors->all() as $error)
