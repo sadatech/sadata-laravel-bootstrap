@@ -39,6 +39,9 @@
             "namespace_rewrite_required": false,
             "installable": true,
             "theme": "bootstrap"
+        },
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
         }
     },
     "minimum-stability": "stable",
