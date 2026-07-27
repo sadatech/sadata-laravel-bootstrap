@@ -23,12 +23,14 @@
         @continue
     @endif
     @if (isset($item['section']))
-        <div class="nav-section-title">{{ $item['section'] }}</div>
+        <div class="nav-section-title d-flex align-items-center gap-2">
+            <span>{{ $item['section'] }}</span>
+        </div>
     @else
         <div class="nav-item">
             @php($path = parse_url($item['url'] ?? '#', PHP_URL_PATH) ?: '')
-            <a href="{{ $item['url'] ?? '#' }}" class="nav-link {{ $path !== '' && request()->is(ltrim($path, '/')) ? 'active' : '' }}">
-                <i class="bi {{ $item['icon'] ?? 'bi-circle' }}"></i>
+            <a href="{{ $item['url'] ?? '#' }}" class="nav-link {{ $path !== '' && request()->is(ltrim($path, '/'), ltrim($path, '/').'/*') ? 'active' : '' }}">
+                <i class="bi {{ $item['icon'] ?? 'bi-circle' }}" aria-hidden="true"></i>
                 <span>{{ $item['label'] }}</span>
             </a>
         </div>

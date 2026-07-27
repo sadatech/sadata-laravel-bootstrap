@@ -25,8 +25,9 @@
     :import-logs-target="$importsEnabled ? '#'.$singular.'-import-history-modal' : null"
     import-logs-label="Riwayat import"
 >
+    <div class="d-flex flex-wrap gap-2 align-items-center">
     @if (data_get($config, 'views.enabled', true))
-        <button type="button" class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-sliders"></i>
             <span>Tampilan</span>
         </button>
@@ -48,4 +49,5 @@
             </div>
         </div>
     @endif
+    </div>
 </x-ui.toolbar>
