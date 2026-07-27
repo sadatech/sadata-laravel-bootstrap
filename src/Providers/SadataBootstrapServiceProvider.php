@@ -2,6 +2,7 @@
 
 namespace Sadata\Bootstrap\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class SadataBootstrapServiceProvider extends ServiceProvider
@@ -9,6 +10,7 @@ class SadataBootstrapServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'sadata-bootstrap');
+        Blade::anonymousComponentPath(__DIR__.'/../../resources/views/components');
 
         $this->publishes([
             __DIR__.'/../../resources/views/layouts' => resource_path('views/layouts'),

@@ -50,6 +50,7 @@ return [
                     'table' => 'theme.bootstrap.master-data.table',
                     'pivot_workspace' => 'theme.bootstrap.master-data.pivot-workspace',
                     'export_modal' => 'theme.bootstrap.master-data.export-modal',
+                    'import_modal' => 'theme.bootstrap.master-data.import-modal',
                 ],
             ],
             'assets' => [

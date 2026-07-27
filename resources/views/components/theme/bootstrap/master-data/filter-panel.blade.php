@@ -5,21 +5,30 @@
         <div class="card-body">
             <form id="{{ $formId }}" method="GET" class="row g-3">
                 @foreach ($filters as $filter)
+                    @php
+                        $filterName = $filter['name'] ?? $filter['key'] ?? '';
+                        $filterType = $filter['type'] ?? 'text';
+                        $filterOptions = $filter['options'] ?? [];
+                    @endphp
                     <div class="col-md-{{ $filter['width'] ?? 4 }} {{ $filter['class'] ?? '' }}">
                         <label class="form-label small fw-semibold text-muted">{{ $filter['label'] ?? '' }}</label>
-                        @if ($filter['type'] === 'select')
-                            <select name="{{ $filter['name'] }}" class="form-select form-select-sm">
+                        @if (in_array($filterType, ['select', 'foreign'], true))
+                            <select name="{{ $filterName }}" class="form-select form-select-sm">
                                 <option value="">{{ $filter['placeholder'] ?? 'All' }}</option>
-                                @foreach (($filter['options'] ?? []) as $option)
-                                    <option value="{{ $option['value'] }}" {{ request($filter['name']) == $option['value'] ? 'selected' : '' }}>
-                                        {{ $option['label'] }}
+                                @foreach ($filterOptions as $optionValue => $optionLabel)
+                                    @php
+                                        $value = is_array($optionLabel) ? ($optionLabel['value'] ?? $optionValue) : $optionValue;
+                                        $label = is_array($optionLabel) ? ($optionLabel['label'] ?? $value) : $optionLabel;
+                                    @endphp
+                                    <option value="{{ $value }}" {{ request($filterName) == $value ? 'selected' : '' }}>
+                                        {{ $label }}
                                     </option>
                                 @endforeach
                             </select>
-                        @elseif ($filter['type'] === 'date')
-                            <input type="date" name="{{ $filter['name'] }}" class="form-control form-control-sm" value="{{ request($filter['name']) }}">
-                        @elseif ($filter['type'] === 'text')
-                            <input type="text" name="{{ $filter['name'] }}" class="form-control form-control-sm" value="{{ request($filter['name']) }}" placeholder="{{ $filter['placeholder'] ?? '' }}">
+                        @elseif ($filterType === 'date')
+                            <input type="date" name="{{ $filterName }}" class="form-control form-control-sm" value="{{ request($filterName) }}">
+                        @else
+                            <input type="text" name="{{ $filterName }}" class="form-control form-control-sm" value="{{ request($filterName) }}" placeholder="{{ $filter['placeholder'] ?? '' }}">
                         @endif
                     </div>
                 @endforeach
