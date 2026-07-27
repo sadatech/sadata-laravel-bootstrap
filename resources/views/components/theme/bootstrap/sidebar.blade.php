@@ -14,12 +14,14 @@
             ['icon' => 'bi-person', 'label' => 'Users', 'url' => \Illuminate\Support\Facades\Route::has('users.index') ? route('users.index') : '#'],
             ['section' => 'System'],
             ['icon' => 'bi-list-ul', 'label' => 'Menus', 'url' => \Illuminate\Support\Facades\Route::has('menus.index') ? route('menus.index') : '#'],
-            ['icon' => 'bi-shield-lock', 'label' => 'Roles', 'url' => \Illuminate\Support\Facades\Route::has('roles.index') ? route('roles.index') : '#'],
         ];
     @endphp
 @endif
 
 @foreach ($items as $item)
+    @if (($item['url'] ?? null) === '#')
+        @continue
+    @endif
     @if (isset($item['section']))
         <div class="nav-section-title">{{ $item['section'] }}</div>
     @else
